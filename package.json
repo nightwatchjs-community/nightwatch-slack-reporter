@@ -1,0 +1,35 @@
+{
+  "name": "nightwatch-slack-reporter",
+  "version": "0.0.1",
+  "description": "Notifies Nightwatch.js reports to Slack",
+  "main": "lib/reporter",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ngs/nightwatch-slack-reporter.git"
+  },
+  "keywords": [
+    "nightwatchjs",
+    "nightwatch",
+    "reporter",
+    "slack",
+    "chat",
+    "notification"
+  ],
+  "author": "Atsushi Nagase",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngs/nightwatch-slack-reporter/issues"
+  },
+  "homepage": "https://github.com/ngs/nightwatch-slack-reporter#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "mockery": "^1.7.0"
+  },
+  "dependencies": {
+    "@slack/client": "^3.6.0"
+  }
+}
