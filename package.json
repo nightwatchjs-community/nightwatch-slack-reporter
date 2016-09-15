@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/ngs/nightwatch-slack-reporter.git"
   },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "keywords": [
     "nightwatchjs",
     "nightwatch",
@@ -30,6 +33,7 @@
     "mockery": "^1.7.0"
   },
   "dependencies": {
-    "@slack/client": "^3.6.0"
+    "@slack/client": "^3.6.0",
+    "object-assign": "^4.1.0"
   }
 }
