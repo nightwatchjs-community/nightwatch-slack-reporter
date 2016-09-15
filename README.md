@@ -4,7 +4,9 @@ nightwatch-slack-reporter
 [![Travis CI](https://travis-ci.org/ngs/nightwatch-slack-reporter.svg?branch=master)](https://travis-ci.org/ngs/nightwatch-slack-reporter)
 [![npm](	https://img.shields.io/npm/v/nightwatch-slack-reporter.svg)](https://www.npmjs.com/package/nightwatch-slack-reporter)
 
-A @nightwatchjs reporter that notifies results to [Slack]
+A [Nightwatch.js] reporter that notifies results to [Slack]
+
+![](screen.png)
 
 Install
 -------
@@ -66,3 +68,4 @@ License
 [Atsushi Nagase]: http://ngs.io/
 [MIT License]: LICENSE
 [Slack]: https://slack.com/
+[Nightwatch.js]: http://nightwatchjs.org/
