@@ -26,6 +26,7 @@ describe('Reporter', function() {
     ;
 
   beforeEach(function() {
+    mockery.warnOnReplace(false);
     mockery.registerMock('@slack/client', {
       IncomingWebhook: createMockIncomingWebhook(function(t, data) {
         usedWebhookURL = t;
@@ -47,9 +48,6 @@ describe('Reporter', function() {
     results = function() {
       return require('./fixtures/has_failure');
     };
-    subject = function(done) {
-      return reporter.write(results(), options(), done)
-    };
     expectedAttachments = [
       {
         color: 'danger',
@@ -68,10 +66,11 @@ describe('Reporter', function() {
         text: '2 assertions, 21.77 seconds elapsed',
         fields: []
       }
-    ]
+    ];
+    subject = null;
   });
 
-  describe('#write', function() {
+  function writeTests() {
     describe('uses specified webhook URL', function() {
       it('from options.globals', function(done) {
         subject(function() {
@@ -92,8 +91,6 @@ describe('Reporter', function() {
       });
     });
     describe('writes report', function() {
-
-
       it('with message defined string in globals', function(done) {
         subject(function() {
           expect(sentData).to.deep.equal({
@@ -123,7 +120,23 @@ describe('Reporter', function() {
           done();
         });
       });
-
     });
+  }
+
+  describe('#write', function() {
+    beforeEach(function() {
+      subject = function(done) {
+        return reporter.write(results(), options(), done)
+      };
+    });
+    writeTests();
+  });
+  describe('from exported', function() {
+    beforeEach(function() {
+      subject = function(done) {
+        return reporter(options())(results(), done);
+      };
+    })
+    writeTests();
   });
 });
