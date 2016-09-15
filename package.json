@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-slack-reporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Notifies Nightwatch.js reports to Slack",
   "main": "lib/reporter",
   "scripts": {
