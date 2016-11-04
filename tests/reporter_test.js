@@ -120,6 +120,27 @@ describe('Reporter', function() {
           done();
         });
       });
+      
+      it('with send only on failure', function(done) {
+        options = function() {
+          return {
+            globals: {
+              slack_webhook_url: 'https://www.foo.com/bar',
+              slack_message: function(results, options) {
+                return 'Test completed, passed ' + results.passed + ', failed ' + results.failed
+              },
+              slack_send_only_on_failure: true
+            }
+          }
+        };
+        subject(function() {
+          expect(sentData).to.deep.equal({
+            text: 'Test completed, passed 2, failed 1',
+            attachments: expectedAttachments
+          });
+          done();
+        });
+      });
     });
   }
 
