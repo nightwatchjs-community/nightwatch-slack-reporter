@@ -67,6 +67,18 @@ describe('Reporter', function() {
         fields: []
       }
     ];
+    expectedAttachmentsOnlyFailed = [
+      {
+        color: 'danger',
+        title: 'Example Test',
+        footer: '01_my_examples',
+        text: '3 assertions, 21.77 seconds elapsed',
+        fields: [{
+          title: 'Test 3',
+          value: 'Expected "true" but got: "false"'
+        }]
+      }
+    ];
     subject = null;
   });
 
@@ -116,6 +128,27 @@ describe('Reporter', function() {
           expect(sentData).to.deep.equal({
             text: 'Test completed, passed 2, failed 1',
             attachments: expectedAttachments
+          });
+          done();
+        });
+      });
+      
+      it('with send only failed tests', function(done) {
+        options = function() {
+          return {
+            globals: {
+              slack_webhook_url: 'https://www.foo.com/bar',
+              slack_message: function(results, options) {
+                return 'Test completed, passed ' + results.passed + ', failed ' + results.failed
+              },
+              slack_send_only_failed_tests: true
+            }
+          }
+        };
+        subject(function() {
+          expect(sentData).to.deep.equal({
+            text: 'Test completed, passed 2, failed 1',
+            attachments: expectedAttachmentsOnlyFailed
           });
           done();
         });
