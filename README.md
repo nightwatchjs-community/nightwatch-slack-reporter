@@ -49,8 +49,15 @@ options = {
   },
   slack_webhook_url: 'https://hooks.slack.com/services/...'
   // This can be specified with SLACK_WEBHOOK_URL environment variable
+  additionalFields: [
+    'customFieldPathFromNightwatchConfig',
+    'anotherCustomFieldPathFromNightwatchConfig'
+  ],
+  // additionalFields to get from configuration
 }
 ```
+
+Note that you could access additionalFields from `options.additionalFields['customFieldPathFromNightwatchConfig']` into `slack_message function.
 
 Author
 ------
